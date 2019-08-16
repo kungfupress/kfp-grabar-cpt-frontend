@@ -1,11 +1,13 @@
 <?php
 /**
  * Plugin Name: KFP Grabar CPT Frontend
+ * Description: Plugin de ejemplo para el artículo "Grabar Custom Post Type desde el frontend de WordPress". Utiliza el shortcode [kfp_gcf_form_idea]
  * Author: KungFuPress
+ * Author URI: https://kungfupress.com
  * Version: 0.1
- * Description: Plugin de ejemplo para el artículo "Grabar Custom Post Type desde el frontend de WordPress" del blog de KungFuPress. Utiliza el shortcode [kfp_gcf_form_idea]
  */
 
+// Evita que se llame directamente a este fichero sin pasar por WordPress
 defined( 'ABSPATH' ) or die();
 // Crea el CPT al activar el plugin
 add_action('init', 'kfp_cpt_idea', 10);
@@ -39,7 +41,6 @@ function kfp_cpt_idea()
  */
 function Kfp_Gcf_Form_idea()
 {
-    global $wpdb;
     if (isset($_GET['kfp_gcf_texto_aviso'])) {
         echo "<h4>" . $_GET['kfp_gcf_texto_aviso'] . "</h4>";
     }
@@ -108,7 +109,7 @@ function Kfp_Gcf_Grabar_idea()
     );
 
     // Esta variable $post_id contiene el ID del nuevo registro 
-    // Nos vendría de perlas para grabar los metadatas
+    // Nos vendría de perlas para grabar los metadatos
     $post_id = wp_insert_post($args);
 
     $aviso = "success";
