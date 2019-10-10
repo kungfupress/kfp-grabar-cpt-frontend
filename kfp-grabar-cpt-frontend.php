@@ -50,8 +50,8 @@ function Kfp_Gcf_Form_idea()
         method="post" id="kfp-gcf-form-grabar-idea">
         <?php wp_nonce_field('kfp-gcf-form', 'kfp-gcf-form-nonce'); ?>
         <input type="hidden" name="action" value="kfp-gcf-grabar-idea">
-        <input type="hidden" name="kfp-url-origen" 
-            value="<?php echo home_url( add_query_arg(array())); ?>"
+        <input type="hidden" name="kfp-gcf-url-origen" 
+            value="<?php echo home_url( add_query_arg(array())); ?>">
         <p>
             <label for="kfp-gcf-title">Idea</label>
             <input type="text" name="kfp-gcf-title" id="kfp-gcf-title" 
@@ -77,8 +77,8 @@ function Kfp_Gcf_Form_idea()
  */
 function Kfp_Gcf_Grabar_idea()
 {
-    if (filter_has_var(INPUT_POST, 'kfp-url-origen')) {
-        $url_origen = filter_input(INPUT_POST, 'kfp-url-origen', FILTER_SANITIZE_URL);
+    if (filter_has_var(INPUT_POST, 'kfp-gcf-url-origen')) {
+        $url_origen = filter_input(INPUT_POST, 'kfp-gfc-url-origen', FILTER_SANITIZE_URL);
     }
 
     if(empty($_POST['kfp-gcf-title']) || empty($_POST['kfp-gcf-content'])
@@ -93,8 +93,8 @@ function Kfp_Gcf_Grabar_idea()
                         'kfp_gcf_texto_aviso' => $texto_aviso,
                     ),
                     $url_origen
-                ) 
-            ) 
+                )
+            )
         );
         exit();
     }
@@ -122,8 +122,8 @@ function Kfp_Gcf_Grabar_idea()
                     'kfp_gcf_texto_aviso' => $texto_aviso,
                 ),
                 $url_origen
-            ) 
-        ) 
+            )
+        )
     );
     exit();
 }
